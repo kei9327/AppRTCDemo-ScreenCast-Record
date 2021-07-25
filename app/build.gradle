@@ -1,0 +1,55 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+
+android {
+  compileSdkVersion 29
+
+//  sourceSets.main {
+//    jniLibs.srcDir 'libs'
+//    jni.srcDirs = [] //disable automatic ndk-build call
+//  }
+
+
+  defaultConfig {
+    applicationId "org.appspot.apprtc"
+    minSdkVersion 21
+    targetSdkVersion 29
+
+    versionCode 1032006
+    versionName "r1032006"
+
+    testApplicationId "org.appspot.apprtc.test"
+    testInstrumentationRunner "android.test.InstrumentationTestRunner"
+  }
+
+  buildTypes {
+    release {
+      minifyEnabled true
+      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+    }
+  }
+
+  lintOptions {
+    abortOnError false
+  }
+
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
+  }
+}
+
+dependencies {
+  implementation 'org.webrtc:google-webrtc:1.0.+'
+  api 'jp.co.cyberagent.android:gpuimage:2.1.0'
+  implementation 'com.jakewharton.timber:timber:4.7.1'
+
+  implementation files('libs/autobanh.jar')
+  implementation files('libs/app-release.aar')
+  implementation 'com.android.support:support-annotations:28.0.0'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+//  implementation project(path: ':Webrtc_Gpu_pack')
+}
+repositories {
+    mavenCentral()
+}
